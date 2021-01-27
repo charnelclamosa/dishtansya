@@ -17,10 +17,7 @@ class UserController extends Controller
             'password' => 'required|string|min:5'
         ]);
         if($validator->fails()) {
-            return response()->json([
-                'errors' => $validator->errors()->all(),
-                'status' => '400'
-            ]);
+            return response()->json(['errors' => $validator->errors()->all()])->setStatusCode(400);
         }
         // Check if email already exist
         $user = User::where('email', $request->email)->first();
