@@ -19,7 +19,7 @@ class UserController extends Controller
         if($validator->fails()) {
             return response()->json([
                 'errors' => $validator->errors()->all(),
-                'status' => '402'
+                'status' => '400'
             ]);
         }
         // Check if email already exist
